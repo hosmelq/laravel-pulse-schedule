@@ -45,7 +45,6 @@ class Schedule extends Card
 
         return view('pulse-schedule::livewire.schedule', [
             'events' => $events,
-            'poll_interval' => config('pulse-schedule.poll_interval'),
         ]);
     }
 
