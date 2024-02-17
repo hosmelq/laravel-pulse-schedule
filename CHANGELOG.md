@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/hosmelq/laravel-pulse-schedule/compare/v0.2.1...HEAD)
 
+### Changed.
+
+Install the correct Safe PHP package.
+
 ## [v0.2.1](https://github.com/hosmelq/laravel-pulse-schedule/compare/v0.2.0...v0.2.1) - 2024-02-16
 
 ### Fixed
