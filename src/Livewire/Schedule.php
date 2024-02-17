@@ -9,11 +9,11 @@ use function Safe\preg_replace;
 use Closure;
 use Cron\CronExpression;
 use DateTimeZone;
-use Exception;
 use Illuminate\Console\Application;
 use Illuminate\Console\Scheduling\CallbackEvent;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Console\Scheduling\Schedule as IlluminateSchedule;
+use Illuminate\Contracts\Console\Kernel as ConsoleKernel;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Carbon;
 use Laravel\Pulse\Livewire\Card;
@@ -24,24 +24,18 @@ use ReflectionFunction;
 #[Lazy]
 class Schedule extends Card
 {
-    public function render(): View
+    public function render(ConsoleKernel $kernel, IlluminateSchedule $schedule): View
     {
-        if (! class_exists(\App\Console\Kernel::class)) {
-            throw new Exception('Class \App\Console\Kernel not found.');
-        }
-
-        resolve(\App\Console\Kernel::class);
+        $kernel->bootstrap();
 
         $timezone = new DateTimeZone(config('app.timezone')); // @phpstan-ignore-line
-        $events = collect(resolve(IlluminateSchedule::class)->events())
-            ->map(function (Event $event) use ($timezone): array {
-                return [
-                    'command' => $this->getCommand($event),
-                    'expression' => $this->getExpression($event),
-                    'next_due' => $this->getNextDueDateForEvent($event, $timezone)
-                        ->diffForHumans(),
-                ];
-            });
+        $events = collect($schedule->events())
+            ->map(fn (Event $event): array => [
+                'command' => $this->getCommand($event),
+                'expression' => $this->getExpression($event),
+                'next_due' => $this->getNextDueDateForEvent($event, $timezone)
+                    ->diffForHumans(),
+            ]);
 
         return view('pulse-schedule::livewire.schedule', [
             'events' => $events,
