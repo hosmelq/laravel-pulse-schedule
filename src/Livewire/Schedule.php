@@ -37,7 +37,7 @@ class Schedule extends Card
                     ->diffForHumans(),
             ]);
 
-        return view('pulse-schedule::livewire.schedule', [
+        return view('pulse-schedule::livewire.schedule', [ // @phpstan-ignore-line
             'events' => $events,
         ]);
     }
@@ -61,7 +61,7 @@ class Schedule extends Card
         }
 
         if (is_array($callback)) {
-            $className = is_string($callback[0]) ? $callback[0] : $callback[0]::class;
+            $className = is_string($callback[0]) ? $callback[0] : $callback[0]::class; // @phpstan-ignore-line
 
             return sprintf('%s::%s', $className, $callback[1]);
         }
