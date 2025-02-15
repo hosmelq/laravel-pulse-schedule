@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/hosmelq/laravel-pulse-schedule/compare/v0.2.2...HEAD)
 
+### Added
+
+- Laravel 12 support.
+
 ## [v0.2.2](https://github.com/hosmelq/laravel-pulse-schedule/compare/v0.2.1...v0.2.2) - 2024-02-17
 
 ### Changed.
