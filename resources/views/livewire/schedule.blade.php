@@ -20,9 +20,11 @@
                     @foreach($events as $event)
                         <tr class="h-2 first:h-0" wire:key="{{ $event['command'] }}-spacer"></tr>
                         <tr wire:key="{{ $event['command'] }}-row">
-                            <x-pulse::td>{{ $event['command'] }}</x-pulse::td>
-                            <x-pulse::td>{{ $event['next_due'] }}</x-pulse::td>
-                            <x-pulse::td>{{ $event['expression'] }}</x-pulse::td>
+                            <x-pulse::td>
+                                {{ $event['command'] }} <span style="color: #a65f00;">{{ $event['arguments'] }}</span>
+                            </x-pulse::td>
+                            <x-pulse::td>{{ $event['next_due'] }} </x-pulse::td>
+                            <x-pulse::td>{{ $event['expression'] }} {{ $event['repeat_expression'] }}</x-pulse::td>
                         </tr>
                     @endforeach
                 </tbody>
