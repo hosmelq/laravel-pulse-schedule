@@ -39,8 +39,6 @@ You can now add the card.
 - [Hosmel Quintana](https://github.com/hosmelq)
 - [All Contributors](../../contributors)
 
-The majority of the code has been taken from [here](https://github.com/laravel/framework/blob/10.x/src/Illuminate/Console/Scheduling/ScheduleListCommand.php).
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
