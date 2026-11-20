@@ -5,7 +5,7 @@
         </x-slot:icon>
     </x-pulse::card-header>
     <x-pulse::scroll :expand="$expand" wire:poll.5s="">
-        @empty($events)
+        @if ($events->isEmpty())
             <x-pulse::no-results />
         @else
             <x-pulse::table>
@@ -18,8 +18,8 @@
                 </x-pulse::thead>
                 <tbody>
                     @foreach($events as $event)
-                        <tr class="h-2 first:h-0" wire:key="{{ $event['command'] }}-spacer"></tr>
-                        <tr wire:key="{{ $event['command'] }}-row">
+                        <tr class="h-2 first:h-0" wire:key="{{ $loop->index }}-spacer"></tr>
+                        <tr wire:key="{{ $loop->index }}-row">
                             <x-pulse::td>
                                 {{ $event['command'] }} <span style="color: #a65f00;">{{ $event['arguments'] }}</span>
                             </x-pulse::td>
@@ -29,6 +29,6 @@
                     @endforeach
                 </tbody>
             </x-pulse::table>
-        @endempty
+        @endif
     </x-pulse::scroll>
 </x-pulse::card>
