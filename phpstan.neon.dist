@@ -1,0 +1,6 @@
+includes:
+  - vendor/hosmelq/php-coding-standard/config/phpstan-laravel-package.neon
+
+parameters:
+  paths:
+    - src

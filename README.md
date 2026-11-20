@@ -1,8 +1,13 @@
 # Laravel Pulse - Schedule
 
-Laravel Pulse card that list all scheduled tasks.
+Show your Laravel app's scheduled tasks in a Laravel Pulse card.
 
 ![Screenshot of a Laravel Pulse card showing all scheduled tasks.](assets/screenshot.png)
+
+## Requirements
+
+- Laravel 13+
+- PHP 8.4+
 
 ## Installation
 
@@ -14,7 +19,7 @@ composer require hosmelq/laravel-pulse-schedule
 
 ## Usage
 
-To add the card to the Pulse dashboard, you must first [publish](https://laravel.com/docs/10.x/pulse#dashboard-customization) the dashboard view.
+To add the card to the Pulse dashboard, you must first [publish](https://laravel.com/docs/13.x/pulse#dashboard-customization) the dashboard view.
 
 ```sh
 php artisan vendor:publish --tag=pulse-dashboard
@@ -41,4 +46,4 @@ You can now add the card.
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

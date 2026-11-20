@@ -7,7 +7,9 @@ namespace HosmelQ\Laravel\Pulse\Schedule;
 use HosmelQ\Laravel\Pulse\Schedule\Livewire\Schedule;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Pulse\Pulse;
 use Livewire\LivewireManager;
+use Override;
 
 class ScheduleServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -23,8 +25,9 @@ class ScheduleServiceProvider extends ServiceProvider implements DeferrableProvi
     /**
      * @return array<class-string>
      */
-    public function provides()
+    #[Override]
+    public function provides(): array
     {
-        return [\Laravel\Pulse\Pulse::class];
+        return [Pulse::class];
     }
 }

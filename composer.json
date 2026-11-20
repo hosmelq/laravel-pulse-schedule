@@ -1,13 +1,14 @@
 {
     "name": "hosmelq/laravel-pulse-schedule",
-    "description": "Laravel Pulse card that list all scheduled tasks.",
+    "description": "Show your Laravel app's scheduled tasks in a Laravel Pulse card.",
     "license": "MIT",
-    "type": "library",
     "keywords": [
         "laravel",
-        "pulse",
         "laravel-pulse",
-        "laravel-pulse-schedule"
+        "laravel-pulse-schedule",
+        "pulse",
+        "scheduled-tasks",
+        "scheduler"
     ],
     "authors": [
         {
@@ -16,22 +17,37 @@
         }
     ],
     "require": {
-        "php": "^8.1",
-        "laravel/framework": "^10.48.4|^11.0.8|^12.0|^13.0",
-        "laravel/pulse": "^1.4"
+        "php": "^8.4",
+        "illuminate/console": "^13.42.0",
+        "illuminate/support": "^13.42.0",
+        "laravel/pulse": "^1.11.0",
+        "thecodingmachine/safe": "^3.4.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.10"
+        "ergebnis/composer-normalize": "^2.57.0",
+        "hosmelq/php-coding-standard": "^1.5.0",
+        "larastan/larastan": "^3.15.0",
+        "orchestra/testbench": "^11.3.0",
+        "pestphp/pest": "^5.3.6",
+        "pestphp/pest-plugin-agent": "^5.0.0",
+        "pestphp/pest-plugin-rector": "^5.0.6",
+        "shipmonk/composer-dependency-analyser": "^1.8.4"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "HosmelQ\\Laravel\\Pulse\\Schedule\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "HosmelQ\\Laravel\\Pulse\\Schedule\\Tests\\": "tests/"
+        }
+    },
     "config": {
         "allow-plugins": {
+            "ergebnis/composer-normalize": true,
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
         },
@@ -45,7 +61,18 @@
         }
     },
     "scripts": {
-        "analyse": "phpstan analyse --configuration=phpstan.neon.dist --memory-limit=4G",
-        "rector": "rector"
-    }
+        "ecs": "ecs check --fix",
+        "phpstan": "phpstan analyse --memory-limit=4G",
+        "rector": "rector",
+        "test": "pest",
+        "test-coverage": "pest --coverage"
+    },
+    "scripts-descriptions": {
+        "ecs": "Runs ECS.",
+        "phpstan": "Runs PHPStan analyse.",
+        "rector": "Runs Rector.",
+        "test": "Runs the Pest test suite.",
+        "test-coverage": "Runs the Pest test suite with code coverage."
+    },
+    "$schema": "https://getcomposer.org/schema.json"
 }

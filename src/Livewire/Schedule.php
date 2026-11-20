@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace HosmelQ\Laravel\Pulse\Schedule\Livewire;
 
+use function Safe\preg_match;
+
 use Illuminate\Console\Scheduling\ScheduleListCommand;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\View\View;
 use Laravel\Pulse\Livewire\Card;
 use Livewire\Attributes\Lazy;
 
@@ -23,10 +25,12 @@ class Schedule extends Card
 
         $events = collect(explode("\n", Artisan::output()))
             ->filter()
-            ->map(function (string $line): ?array {
+            ->map(function (string $line): null|array {
                 $pattern = '/^\s*([*0-9,-\/]+\s+[*0-9,-\/]+\s+[*0-9,-\/]+\s+[*0-9,-\/]+\s+[*0-9,-\/]+)(?:\s+(\d+s))?\s+(.+?)\s+\.+\s+Next Due:\s+(.+)$/';
 
-                if (! preg_match($pattern, $line, $matches)) {
+                preg_match($pattern, $line, $matches);
+
+                if ($matches === []) {
                     return null;
                 }
 
@@ -44,9 +48,9 @@ class Schedule extends Card
                 return [
                     'arguments' => $arguments,
                     'command' => $command,
-                    'expression' => trim($matches[1]),
-                    'next_due' => trim($matches[4]),
-                    'repeat_expression' => $matches[2] ?? null,
+                    'expression' => mb_trim($matches[1]),
+                    'next_due' => mb_trim($matches[4]),
+                    'repeat_expression' => $matches[2],
                 ];
             })
             ->filter();

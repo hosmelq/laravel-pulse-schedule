@@ -1,6 +1,6 @@
+.DS_Store
+.cache
 .idea
-
-vendor
-
+.vscode
 composer.lock
-phpunit.xml
+vendor

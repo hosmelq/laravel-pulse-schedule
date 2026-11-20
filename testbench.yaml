@@ -1,0 +1,7 @@
+providers:
+  - Livewire\LivewireServiceProvider
+  - Laravel\Pulse\PulseServiceProvider
+  - HosmelQ\Laravel\Pulse\Schedule\ScheduleServiceProvider
+
+workbench:
+  install: false
