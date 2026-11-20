@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Require PHP 8.4 or newer, Laravel 13 and Laravel Pulse 1.11.
 - List tasks whose command is too long to fit on one line, which the card used to skip.
+- List tasks scheduled with month or weekday names, such as `0 1 * JAN MON`.
 - Show commands that contain console markup, such as `<info>`, as written.
 - Show the no-results state when no tasks are scheduled.
 - Keep each row distinct when several tasks run the same command.
